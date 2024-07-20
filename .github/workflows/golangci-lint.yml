@@ -42,4 +42,5 @@ jobs:
           install-mode: "goinstall"
       - name: Check for Deprecated Dependencies
         run: |
-            go run ci-scripts/check_deprecated_deps.go
+          cd $GITHUB_WORKSPACE
+          go run ci-scripts/check_deprecated_deps.go
