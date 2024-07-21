@@ -43,3 +43,6 @@ jobs:
       - name: Check for Deprecated Dependencies
         run: |
           go run ci-scripts/check_deprecated_deps.go
+      - name: Set Warning Output
+        if: steps.check_deps.outputs.deprecated-warnings != ''
+        run: echo "::warning::${{ steps.check_deps.outputs.deprecated-warnings }}"
