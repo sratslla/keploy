@@ -44,6 +44,7 @@ jobs:
         id: check_deps
         run: |
           warnings=$(bash .github/workflows/test_workflow_scripts/check-deprecated-deps.sh)
+          echo "Deprecated warnings: $warnings"
           echo "deprecated-warnings=$warnings" >> $GITHUB_OUTPUT
       - name: Set Warning Output
         if: steps.check_deps.outputs.deprecated-warnings != ''
