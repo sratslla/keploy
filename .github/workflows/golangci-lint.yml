@@ -43,7 +43,7 @@ jobs:
       - name: Check for Deprecated Dependencies
         id: check_deps
         run: |
-          warnings=$(bash .github/workflows/test_workflow_scripts/check_deprecated_deps.sh)
+          warnings=$(bash .github/workflows/test_workflow_scripts/check-deprecated-deps.sh)
           echo "deprecated-warnings=$warnings" >> $GITHUB_OUTPUT
       - name: Set Warning Output
         if: steps.check_deps.outputs.deprecated-warnings != ''
