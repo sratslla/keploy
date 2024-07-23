@@ -11,8 +11,8 @@ echo "$output" | while IFS= read -r line; do
         echo "Deprecated dependency found: $line"
         found_deprecated=true
     fi
-    if [ "$found_deprecated" = true ]; then
-        echo "Exiting with failure due to deprecated dependencies."
-        exit 1
-    fi
 done 
+if $found_deprecated; then
+    echo "Exiting with failure due to deprecated dependencies."
+    exit 1
+fi
