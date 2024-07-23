@@ -8,6 +8,7 @@ warnings=""
 # Check for deprecated dependencies
 echo "$output" | while IFS= read -r line; do
     if [[ "$line" == *"deprecated"* ]]; then
+        echo "Deprecated dependency found: $line"
         warnings+="Deprecated dependency found: $line\n"
     fi
 done
