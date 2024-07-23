@@ -41,8 +41,10 @@ jobs:
           # Optional: The mode to install golangci-lint. It can be 'binary' or 'goinstall'.
           install-mode: "goinstall"
       - name: Check for Deprecated Dependencies
+        id: check_deps
         run: |
-          go run ci-scripts/check_deprecated_deps.go
+          warnings=$(bash ci-scripts/check_deprecated_deps.sh)
+          echo "deprecated-warnings=$warnings" >> $GITHUB_OUTPUT
       - name: Set Warning Output
         if: steps.check_deps.outputs.deprecated-warnings != ''
         run: echo "::warning::${{ steps.check_deps.outputs.deprecated-warnings }}"
